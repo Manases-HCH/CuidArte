@@ -11,11 +11,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cuidarte.R;
+import com.example.cuidarte.utils.TemaManager;
 
 public class SplashActivity extends AppCompatActivity {
     ProgressBar barCarga;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TemaManager.inicializar(this);
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash);

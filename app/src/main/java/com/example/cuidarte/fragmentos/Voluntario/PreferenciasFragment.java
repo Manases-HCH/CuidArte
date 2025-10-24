@@ -14,18 +14,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.cuidarte.databinding.FragmentPreferenciasBinding;
+import com.example.cuidarte.utils.IdiomaManager;
 import com.example.cuidarte.utils.PreferenciasApp;
+import com.example.cuidarte.utils.TemaManager;
 
 /**
  * Fragmento que maneja la lógica de la pantalla de configuración (Preferencias).
  * Integrado con PreferenciasApp para persistencia de datos.
+ * Ahora aplicar cambios reales de tema e idioma.
  */
 public class PreferenciasFragment extends Fragment {
 
-    // Variable para el View Binding
     private FragmentPreferenciasBinding binding;
-
-    // Variable para acceder a PreferenciasApp
     private PreferenciasApp prefApp;
 
     public PreferenciasFragment() {
@@ -35,12 +35,8 @@ public class PreferenciasFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // 1. Inflar el layout usando View Binding
         binding = FragmentPreferenciasBinding.inflate(inflater, container, false);
-
-        // 2. Inicializar PreferenciasApp
         prefApp = new PreferenciasApp(requireContext());
-
         return binding.getRoot();
     }
 
@@ -48,20 +44,11 @@ public class PreferenciasFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 1. Cargar el estado actual de las preferencias desde SharedPreferences
         cargarPreferenciasIniciales();
-
-        // 2. Configurar Listeners para los Switch (reacción inmediata)
         configurarListenersSwitch();
-
-        // 3. Configurar Listeners para las opciones de clic y el botón
         configurarListenersClic();
     }
 
-    /**
-     * Carga datos de preferencias almacenadas en SharedPreferences.
-     * Establece los estados iniciales de los Switch y TextViews.
-     */
     private void cargarPreferenciasIniciales() {
         Log.i("Preferencias", "Cargando estados iniciales desde SharedPreferences.");
 
@@ -73,31 +60,25 @@ public class PreferenciasFragment extends Fragment {
         boolean notificacionesActivas = prefApp.estanNotificacionesActivas();
         binding.switchNotificaciones.setChecked(notificacionesActivas);
 
-        // Cargar estado de sonido y vibración (por defecto true si no existe)
-        boolean sonidoVibracion = true; // Estado por defecto
+        // Cargar estado de sonido y vibración
+        boolean sonidoVibracion = true;
         binding.switchSonidoVibracion.setChecked(sonidoVibracion);
 
         // Cargar estado de sincronización automática
-        boolean sincroAuto = true; // Estado por defecto
+        boolean sincroAuto = true;
         binding.switchSincronizacionAuto.setChecked(sincroAuto);
 
         // Cargar idioma actual
         String idioma = prefApp.obtenerIdioma();
         String nombreIdioma = idioma.equals("es") ? "Español" :
-                idioma.equals("en") ? "English" : "Otro";
+                idioma.equals("en") ? "English" : "Português";
         binding.txtIdiomaActual.setText(nombreIdioma + " (actual)");
 
-        // Cargar nivel de privacidad si existe
         String privacidad = prefApp.obtenerNivelPrivacidad();
         Log.d("PREF_CARGAR", "Nivel de privacidad: " + privacidad);
     }
 
-    /**
-     * Configura qué sucede cuando el usuario interactúa con los interruptores (Switch).
-     * Ahora guarda los cambios en PreferenciasApp.
-     */
     private void configurarListenersSwitch() {
-        // Definimos un único listener para los Switch
         CompoundButton.OnCheckedChangeListener switchListener = (buttonView, isChecked) -> {
             String estado = isChecked ? "Activado" : "Desactivado";
             String tag = "";
@@ -106,28 +87,27 @@ public class PreferenciasFragment extends Fragment {
             if (buttonView == binding.switchModoOscuro) {
                 tag = "Modo Oscuro";
                 mensaje = tag + ": " + estado;
-                // 🔹 Guardar en PreferenciasApp
-                String tema = isChecked ? "dark" : "light";
-                prefApp.establecerTema(tema);
-                Log.d("PREF_GUARDADO", "Tema guardado: " + tema);
+
+                // 🔹 APLICAR CAMBIO DE TEMA INMEDIATAMENTE
+                TemaManager.cambiarTema(requireContext(), isChecked);
+                Log.d("PREF_GUARDADO", "Tema guardado: " + (isChecked ? "dark" : "light"));
+                Toast.makeText(requireContext(), "Tema aplicado. La app se está actualizando...",
+                        Toast.LENGTH_SHORT).show();
 
             } else if (buttonView == binding.switchNotificaciones) {
                 tag = "Notificaciones";
                 mensaje = tag + ": " + (isChecked ? "Activadas" : "Desactivadas");
-                // 🔹 Guardar en PreferenciasApp
                 prefApp.habilitarNotificaciones(isChecked);
                 Log.d("PREF_GUARDADO", "Notificaciones guardadas: " + isChecked);
 
             } else if (buttonView == binding.switchSonidoVibracion) {
                 tag = "Sonido y Vibración";
                 mensaje = tag + ": " + (isChecked ? "Activados" : "Desactivados");
-                // 🔹 Guardar localmente
                 Log.d("PREF_GUARDADO", "Sonido/Vibración guardado: " + isChecked);
 
             } else if (buttonView == binding.switchSincronizacionAuto) {
                 tag = "Sincronización Automática";
                 mensaje = tag + ": " + estado;
-                // 🔹 Guardar localmente
                 Log.d("PREF_GUARDADO", "Sincronización automática guardada: " + isChecked);
             }
 
@@ -137,69 +117,71 @@ public class PreferenciasFragment extends Fragment {
             }
         };
 
-        // Asignar el listener a todos los Switch
         binding.switchModoOscuro.setOnCheckedChangeListener(switchListener);
         binding.switchNotificaciones.setOnCheckedChangeListener(switchListener);
         binding.switchSonidoVibracion.setOnCheckedChangeListener(switchListener);
         binding.switchSincronizacionAuto.setOnCheckedChangeListener(switchListener);
     }
 
-    /**
-     * Configura las acciones que ocurren al hacer clic en opciones o el botón de guardar.
-     */
     private void configurarListenersClic() {
-        // Definimos el listener para los clics
         View.OnClickListener clickListener = v -> {
             if (v == binding.layoutSeleccionarIdioma) {
-                // Opción: Seleccionar Idioma
                 mostrarDialogoIdioma();
 
             } else if (v == binding.btnGuardarPreferencias) {
-                // Botón de Guardar Cambios
                 guardarPreferencias();
             }
         };
 
-        // Asignar el listener a los elementos de clic
         binding.layoutSeleccionarIdioma.setOnClickListener(clickListener);
         binding.btnGuardarPreferencias.setOnClickListener(clickListener);
     }
 
     /**
-     * Muestra un diálogo para seleccionar idioma
+     * Muestra diálogo para seleccionar idioma
      */
     private void mostrarDialogoIdioma() {
         final String[] idiomas = {"Español", "English", "Português"};
         final String[] codigosIdioma = {"es", "en", "pt"};
 
+        String idiomaActual = prefApp.obtenerIdioma();
+        int posicionActual = 0;
+        for (int i = 0; i < codigosIdioma.length; i++) {
+            if (codigosIdioma[i].equals(idiomaActual)) {
+                posicionActual = i;
+                break;
+            }
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Selecciona un idioma")
-                .setItems(idiomas, (dialog, which) -> {
+                .setSingleChoiceItems(idiomas, posicionActual, (dialog, which) -> {
                     String codigoSeleccionado = codigosIdioma[which];
-                    prefApp.establecerIdioma(codigoSeleccionado);
+
+                    // 🔹 CAMBIAR IDIOMA
+                    IdiomaManager.cambiarIdioma(requireContext(), codigoSeleccionado);
+
                     binding.txtIdiomaActual.setText(idiomas[which] + " (actual)");
                     Toast.makeText(requireContext(), "Idioma guardado: " + idiomas[which],
                             Toast.LENGTH_SHORT).show();
-                    Log.d("PREF_IDIOMA", "Idioma guardado: " + codigoSeleccionado);
+
+                    dialog.dismiss();
                 })
+                .setPositiveButton("OK", null)
                 .show();
     }
 
     /**
-     * Lógica para guardar las preferencias generales.
+     * Guarda las preferencias y muestra confirmación
      */
     private void guardarPreferencias() {
-        // 1. Obtener los estados actuales
         boolean modoOscuroActivado = binding.switchModoOscuro.isChecked();
         boolean notificacionesActivadas = binding.switchNotificaciones.isChecked();
         boolean sonidoVibracionActivado = binding.switchSonidoVibracion.isChecked();
         boolean sincroAutoActivada = binding.switchSincronizacionAuto.isChecked();
         String idiomaActual = prefApp.obtenerIdioma();
 
-        // 2. Los datos ya están guardados en cada cambio (onCheckedChanged)
-        // Pero podemos hacer una verificación final aquí
-
-        Log.i("PREF_GUARDAR", "===== PREFERENCIAS FINALES =====");
+        Log.i("PREF_GUARDAR", "===== PREFERENCIAS GUARDADAS =====");
         Log.i("PREF_GUARDAR", "Modo Oscuro: " + modoOscuroActivado);
         Log.i("PREF_GUARDAR", "Notificaciones: " + notificacionesActivadas);
         Log.i("PREF_GUARDAR", "Sonido/Vibración: " + sonidoVibracionActivado);
@@ -207,14 +189,13 @@ public class PreferenciasFragment extends Fragment {
         Log.i("PREF_GUARDAR", "Idioma: " + idiomaActual);
         Log.i("PREF_GUARDAR", "Nivel de Privacidad: " + prefApp.obtenerNivelPrivacidad());
 
-        Toast.makeText(requireContext(), "¡Todas las preferencias han sido guardadas!",
+        Toast.makeText(requireContext(), "✅ ¡Todas las preferencias han sido guardadas!",
                 Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        // Limpiamos el binding para evitar fugas de memoria
         binding = null;
     }
 }

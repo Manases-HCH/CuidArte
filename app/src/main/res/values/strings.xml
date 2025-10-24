@@ -32,5 +32,14 @@
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is an app widget description</string>
     <string name="idioma">Español</string>
-
+    <string name="apariencia_temas">Apariencia y Temas</string>
+    <string name="modo_oscuro">Modo Oscuro</string>
+    <string name="notificaciones_sonido">Notificaciones y Sonido</string>
+    <string name="activar_notificaciones">Activar Notificaciones de la App</string>
+    <string name="vibracion_sonido">Vibración y Sonido en Alertas</string>
+    <string name="ajustes_generales">Ajustes Generales</string>
+    <string name="idioma_app">Idioma de la Aplicación</string>
+    <string name="sincronizar_datos">Sincronizar datos automáticamente</string>
+    <string name="guardar_cambios">Guardar Cambios</string>
+    <string name="conf_app">Configuración de la Aplicación</string>
 </resources>
