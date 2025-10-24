@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- Icono de Estado -->
+        <!-- FIX: Usamos un color hexadecimal sólido (#4CAF50) en lugar de un atributo de tema
+             para evitar el error de resolución al inflar la vista. -->
+        <ImageView
+            android:id="@+id/imgIconoEstado"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_notification_24"
+            app:tint="#4CAF50"
+            android:contentDescription="Icono de solicitud"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Información principal de la Solicitud -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Título de la Solicitud (Ej: "Cita médica") -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtTipoSolicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Título de la Solicitud"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="?attr/colorOnSurface"/>
+
+            <!-- Subtítulo / Fecha / Estado -->
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtDetalleSolicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Pendiente • 25 de septiembre de 2025"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="?attr/colorOnSurfaceVariant"/>
+        </LinearLayout>
+
+        <!-- Flecha de Navegación -->
+        <!-- FIX: Usamos un color hexadecimal sólido (#757575) en lugar de un atributo de tema. -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_arrow_forward_24"
+            app:tint="#757575"
+            android:contentDescription="Ir a detalles"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

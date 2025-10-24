@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 1. Color Sólido: Define el color de la burbuja (usualmente el color principal de la app) -->
+    <solid android:color="#4CAF50"/>
+
+    <!-- 2. Esquinas Redondeadas: Da la forma de burbuja -->
+    <corners
+        android:radius="16dp"
+        android:topRightRadius="4dp"
+        android:bottomRightRadius="4dp"/>
+
+    <!-- 3. Borde (Opcional): Si quieres un borde, descomenta esta sección. -->
+    <!-- <stroke android:width="1dp" android:color="#388E3C" /> -->
+</shape>

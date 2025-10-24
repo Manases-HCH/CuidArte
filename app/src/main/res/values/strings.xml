@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">CuidArte</string>
+    <string name="carLvlInicio">Cargando...</string>
+    <string name="sesTxtCorreo">Correo</string>
+    <string name="sesTxtClave">Clave</string>
+    <string name="sesChkRecordar">Recordar Sesion</string>
+    <string name="sesBtnIngresar">Ingresar</string>
+    <string name="sesBtnSalir">Salir</string>
+    <string name="sesLblRegistro">Registrarse</string>
+    <string name="regTxtFechaNac">Fecha de Nacimiento</string>
+    <string name="regLblSexo">Seleccione su sexo:</string>
+    <string name="regRbtNoDefinido">Sin Definir</string>
+    <string name="regRbtMasculino">Masculino</string>
+    <string name="regRbtFemenino">Femenino</string>
+    <string name="navigation_drawer_open">Abrir menú de navegación</string>
+    <string name="navigation_drawer_close">Cerrar menú de navegación</string>
+    <string-array name="tipos_usuario">
+        <item>-- Seleccione su rol --</item>
+        <item>Adulto Mayor</item>
+        <item>Voluntario</item>
+        <item>Familiar</item>
+    </string-array>
+    <string-array name="disponibilidad_voluntario">
+        <item>Mañanas</item>
+        <item>Tardes</item>
+        <item>Fines de semana</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bieLblSaludo">Hola {usuario}</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="idioma">Español</string>
+
+</resources>

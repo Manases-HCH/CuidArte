@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+
+    <!-- Color de fondo (puede ser blanco o transparente) -->
+    <solid android:color="@android:color/white" />
+
+    <!-- Borde del círculo -->
+    <stroke
+        android:width="3dp"
+        android:color="@color/purple_500" />
+
+    <!-- Sombra o margen interno -->
+    <padding
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp" />
+
+    <!-- Tamaño mínimo -->
+    <size
+        android:width="100dp"
+        android:height="100dp" />
+</shape>

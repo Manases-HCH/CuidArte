@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 1. Color Sólido: El fondo del campo de texto es blanco. -->
+    <solid android:color="@android:color/white"/>
+
+    <!-- 2. Esquinas Redondeadas: Se usa un radio grande (ej. 24dp) para que parezca una píldora. -->
+    <corners android:radius="24dp"/>
+
+    <!-- 3. Borde: Opcionalmente, se añade un borde gris claro para distinguirlo del fondo. -->
+    <stroke android:color="#E0E0E0" android:width="1dp"/>
+</shape>

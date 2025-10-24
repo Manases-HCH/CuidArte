@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/nav_perfil"
+        android:title="Perfil Profesional" />
+    <item android:id="@+id/nav_solicitudes"
+        android:title="Solicitudes" />
+    <item android:id="@+id/nav_chat"
+        android:title="Chat" />
+    <item android:id="@+id/nav_donaciones"
+        android:title="Donaciones" />
+    <item android:id="@+id/nav_reputacion"
+        android:title="Reputación" />
+    <item android:id="@+id/nav_preferencias"
+        android:title="Preferencias" />
+</menu>

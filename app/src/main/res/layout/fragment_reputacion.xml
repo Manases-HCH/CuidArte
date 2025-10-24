@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".fragmentos.Voluntario.ReputacionFragment">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/txtTituloReputacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reputación"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/purple_500"
+        android:layout_gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Promedio de calificación -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="@drawable/rounded_edittext_chat">
+
+        <TextView
+            android:id="@+id/txtPromedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.5"
+            android:textSize="32sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginEnd="12dp" />
+
+        <RatingBar
+            android:id="@+id/ratingBarPromedio"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:rating="4.5"
+            android:isIndicator="true" />
+    </LinearLayout>
+
+    <!-- Lista de comentarios -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Avatar del usuario -->
+        <ImageView
+            android:id="@+id/imgUsuario"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_person"
+            android:contentDescription="Usuario"
+            android:scaleType="centerCrop"
+            android:padding="4dp" />
+
+        <!-- Contenido -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/txtNombreUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Juan Pérez"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/black" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="4.0"
+                android:isIndicator="true"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/txtComentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Muy buena experiencia, el voluntario fue puntual y amable."
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Fecha -->
+        <TextView
+            android:id="@+id/txtFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12/09/2025"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray" />
+
+    </LinearLayout>
+
+</LinearLayout>
