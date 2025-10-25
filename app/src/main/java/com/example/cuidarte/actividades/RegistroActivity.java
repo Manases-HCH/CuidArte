@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -39,10 +40,28 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class RegistroActivity extends AppCompatActivity implements View.OnClickListener {
     static final int REQUEST_FOTO = 1;
     EditText txtDni,txtNombre, txtApellidos, txtFechaNac, txtCorreo, txtClave, txtClave2;
+
+    EditText txtTelefono, txtDescripcion,txtIntereses,txtLatitud,txtLongitud,txtIdioma;
     Button btnCamara, btnCrear, btnRegresar;
     RadioGroup grpSexo;
     RadioButton rbtNoDefinido, rbtMasculino, rbtFemenino;
@@ -84,7 +103,12 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
         imgFoto = findViewById(R.id.regImgFoto);
         cboDistritos = findViewById(R.id.regCboDistritos);
         chkTerminos = findViewById(R.id.regChkTerminos);
-
+        txtDescripcion = findViewById(R.id.regTxtDescripcion);
+        txtIntereses = findViewById(R.id.regTxtIntereses);
+        txtLatitud = findViewById(R.id.regTxtLatitud);
+        txtLongitud = findViewById(R.id.regTxtLongitud);
+        txtIdioma = findViewById(R.id.regTxtIdioma);
+        txtTelefono = findViewById(R.id.regTxtTelefono);
         cboTipoUsuario = findViewById(R.id.regCboTipoUsuario);
         layoutVoluntario = findViewById(R.id.layoutVoluntario);
         cboDisponibilidad = findViewById(R.id.regCboDisponibilidad);
@@ -182,45 +206,69 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void crearCuenta() {
-        // Datos básicos
-        String dni = txtDni.getText().toString();
-        String nombre = txtNombre.getText().toString();
-        String apellidos = txtApellidos.getText().toString();
-        String fechaNac = txtFechaNac.getText().toString();
-        String correo = txtCorreo.getText().toString();
-        String clave = txtClave.getText().toString();
+        String URL_API = "http://192.168.0.104:8012/api/registro.php";
+
+        // Obtener campos
+        String dni = txtDni.getText().toString().trim();
+        String nombres = txtNombre.getText().toString().trim();
+        String apellidos = txtApellidos.getText().toString().trim();
+        String fechaNac = txtFechaNac.getText().toString().trim();
+        String telefono = txtTelefono.getText().toString().trim();
+        String correo = txtCorreo.getText().toString().trim();
+        String clave = txtClave.getText().toString().trim();
         String tipoUsuario = cboTipoUsuario.getSelectedItem().toString();
+        String descripcion = txtDescripcion.getText().toString().trim();
+        String intereses = txtIntereses.getText().toString().trim();
+        String latitud = txtLatitud.getText().toString().trim();
+        String longitud = txtLongitud.getText().toString().trim();
+        String idioma = txtIdioma.getText().toString().trim();
+        String ubicacion = cboDistritos.getSelectedItem().toString();
+        String foto_url = "https://mi-servidor/fotos/default.png"; // opcional
 
         // Sexo
-        String sexo = "";
+        String sexo = "NO_DEFINIDO";
         int checkedId = grpSexo.getCheckedRadioButtonId();
-        if (checkedId == rbtMasculino.getId()) sexo = "Masculino";
-        else if (checkedId == rbtFemenino.getId()) sexo = "Femenino";
-        else sexo = "No definido";
+        if (checkedId == rbtMasculino.getId()) sexo = "MASCULINO";
+        else if (checkedId == rbtFemenino.getId()) sexo = "FEMENINO";
 
-        // 🔹 Si es voluntario, obtener disponibilidad y habilidades
-        String disponibilidad = "";
-        StringBuilder habilidades = new StringBuilder();
-        if (tipoUsuario.equalsIgnoreCase("Voluntario")) {
-            disponibilidad = cboDisponibilidad.getSelectedItem().toString();
-
-            if (chkLectura.isChecked()) habilidades.append("Lectura, ");
-            if (chkApoyoDigital.isChecked()) habilidades.append("Apoyo Digital, ");
-            if (chkAcompanamiento.isChecked()) habilidades.append("Acompañamiento, ");
-
-            // Quitar última coma si existe
-            if (habilidades.length() > 0) {
-                habilidades.setLength(habilidades.length() - 2);
-            }
+        // Validar campos mínimos
+        if (dni.isEmpty() || correo.isEmpty() || clave.isEmpty()) {
+            Toast.makeText(this, "Completa los campos obligatorios", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        // 🔹 Aquí puedes guardar o enviar los datos
-        Toast.makeText(this,
-                "Usuario: " + tipoUsuario +
-                        "\nNombre: " + nombre +
-                        "\nDisponibilidad: " + disponibilidad +
-                        "\nHabilidades: " + habilidades,
-                Toast.LENGTH_LONG).show();
+        // Enviar parámetros
+        RequestParams params = new RequestParams();
+        params.put("dni", dni);
+        params.put("nombres", nombres);
+        params.put("apellidos", apellidos);
+        params.put("fecha_nacimiento", fechaNac);
+        params.put("sexo", sexo);
+        params.put("correo", correo);
+        params.put("telefono", telefono);
+        params.put("clave", clave);
+        params.put("tipo_usuario", tipoUsuario);
+        params.put("foto_url", foto_url);
+        params.put("descripcion", descripcion);
+        params.put("ubicacion", ubicacion);
+        params.put("latitud", latitud);
+        params.put("longitud", longitud);
+        params.put("idioma", idioma);
+        params.put("intereses", intereses);
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post(URL_API, params, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                String response = new String(responseBody);
+                Toast.makeText(RegistroActivity.this, "Respuesta: " + response, Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(RegistroActivity.this, "Error: " + error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void regresar() {

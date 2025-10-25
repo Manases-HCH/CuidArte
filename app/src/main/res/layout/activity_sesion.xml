@@ -5,53 +5,60 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="36dp"
+    android:paddingEnd="36dp"
+    android:background="@color/background_light"
     tools:context=".actividades.SesionActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
         <!-- Logo -->
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="24dp"
             android:src="@drawable/sesion"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            android:adjustViewBounds="true" />
 
         <!-- Correo -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="8dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sesTxtCorreo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/sesTxtCorreo"
                 android:inputType="textEmailAddress"
-                android:maxLength="100" />
+                android:maxLength="100"
+                android:imeOptions="actionNext" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Clave -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:passwordToggleEnabled="true">
+            android:layout_marginTop="12dp"
+            app:endIconMode="password_toggle">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/sesTxtClave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/sesTxtClave"
                 android:inputType="textPassword"
-                android:maxLength="100" />
+                android:maxLength="100"
+                android:imeOptions="actionDone"
+                android:importantForAutofill="no" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Tipo de Usuario -->
@@ -93,19 +100,23 @@
                 android:id="@+id/sesBtnIngresar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
+                android:layout_marginEnd="8dp"
                 android:text="@string/sesBtnIngresar"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:id="@+id/sesBtnSalir"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_weight="1"
+                android:layout_marginStart="8dp"
                 android:text="@string/sesBtnSalir"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:backgroundTint="@color/black"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <!-- Ir a Registro -->
@@ -114,7 +125,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
+            android:layout_marginBottom="40dp"
+            android:gravity="center"
             android:text="@string/sesLblRegistro"
             android:textColor="@color/purple_500"
             android:textStyle="bold" />

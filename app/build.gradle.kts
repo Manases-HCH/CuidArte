@@ -45,11 +45,13 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     // 🔹 RETROFIT + HTTP
+    implementation("com.loopj.android:android-async-http:1.4.11")
     implementation("com.squareup.retrofit2:retrofit:2.10.0")
     implementation("com.squareup.retrofit2:converter-gson:2.10.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")

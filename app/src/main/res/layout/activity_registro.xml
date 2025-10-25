@@ -6,325 +6,391 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    android:background="@android:color/white"
+    android:background="@color/background_light"
     tools:context=".actividades.RegistroActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        android:gravity="center_horizontal">
 
-        <!-- Título -->
+        <!-- TÍTULO -->
         <TextView
+            android:id="@+id/regTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Crear Cuenta"
-            android:textSize="28sp"
+            android:textSize="26sp"
             android:textStyle="bold"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/purple_700"
             android:gravity="center"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp" />
 
-        <!-- Subtítulo -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Selecciona tu tipo de usuario y completa tus datos"
+            android:text="Completa tus datos para formar parte de la red CuidArte"
             android:textSize="15sp"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/gray_text"
             android:gravity="center"
-            android:layout_marginBottom="24dp"/>
+            android:layout_marginBottom="24dp" />
 
-        <!-- Foto de perfil -->
+        <!-- FOTO DE PERFIL -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:layout_marginBottom="24dp">
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/regImgFoto"
-                android:layout_width="140dp"
-                android:layout_height="140dp"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:src="@drawable/foto"
                 android:scaleType="centerCrop"
                 android:background="@drawable/circle_background"
-                android:layout_marginBottom="12dp"/>
+                android:contentDescription="Foto de perfil"
+                android:elevation="4dp" />
 
             <Button
                 android:id="@+id/regBtnCamara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cambiar Foto"
-                android:backgroundTint="@color/purple_500"
-                android:textColor="@android:color/white"
-                android:textAllCaps="false"/>
+                android:text="Cambiar foto"
+                android:textAllCaps="false"
+                android:textColor="@color/purple_500"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginTop="8dp" />
         </LinearLayout>
 
-        <!-- Tipo de usuario -->
+        <!-- TIPO DE USUARIO -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="Tipo de Usuario"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:id="@+id/regCboTipoUsuario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:entries="@array/tipos_usuario"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" />
 
-        <!-- DNI -->
+        <!-- DATOS PERSONALES -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:hint="DNI"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtDni"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="DNI"
                 android:inputType="number"
-                android:maxLength="10"/>
+                android:maxLength="8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Nombre -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:hint="Nombres"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtNombre"
+                android:inputType="textCapWords"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre"
-                android:inputType="textCapWords"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Apellidos -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:hint="Apellidos"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtApellidos"
+                android:inputType="textCapWords"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Apellidos"
-                android:inputType="textCapWords"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:hint="Fecha de nacimiento"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtFechaNac"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clickable="false"
                 android:focusable="false"
-                android:inputType="date"
-                android:maxLength="10"
-                android:hint="@string/regTxtFechaNac"/>
+                android:clickable="true"
+                android:inputType="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Teléfono -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:hint="Teléfono"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtTelefono"
+                android:inputType="phone"
+                android:maxLength="15"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Teléfono"
-                android:inputType="phone"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- SEXO -->
         <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/regLblSexo"
-        android:layout_margin="5dp"
-        android:textSize="15sp"/>
+            android:text="Sexo"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <RadioGroup
-        android:id="@+id/regGrpSexo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="5dp"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/regRbtNoDefinido"
+            android:id="@+id/regGrpSexo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="@string/regRbtNoDefinido"/>
-        <RadioButton
-            android:id="@+id/regRbtMasculino"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/regRbtMasculino"
+                android:text="Masculino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/regRbtFemenino"
+                android:text="Femenino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/regRbtNoDefinido"
+                android:text="No definido"
+                android:checked="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <!-- NUEVOS CAMPOS OPCIONALES -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/regRbtMasculino"/>
-        <RadioButton
-            android:id="@+id/regRbtFemenino"
+            android:hint="Descripción personal (opcional)"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/regTxtDescripcion"
+                android:inputType="textMultiLine"
+                android:maxLines="3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/regRbtFemenino"/>
-    </RadioGroup>
-        <!-- Sección solo para voluntarios -->
+            android:hint="Intereses o habilidades (separados por coma)"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/regTxtIntereses"
+                android:inputType="text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- LATITUD / LONGITUD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Latitud">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regTxtLatitud"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="Longitud">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/regTxtLongitud"
+                    android:inputType="numberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!-- IDIOMA -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Idioma"
+            android:layout_marginBottom="12dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/regTxtIdioma"
+                android:inputType="textCapWords"
+                android:text="Español"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Sección para voluntarios -->
         <LinearLayout
             android:id="@+id/layoutVoluntario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone"
-            android:paddingTop="8dp">
-
+            android:paddingTop="12dp">
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:text="Disponibilidad"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
             <Spinner
                 android:id="@+id/regCboDisponibilidad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/disponibilidad_voluntario"
-                android:layout_marginBottom="16dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Habilidades"
+                android:layout_marginBottom="12dp" />
+            <TextView android:text="Habilidades"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:layout_marginBottom="8dp"/>
-
-            <CheckBox
-                android:id="@+id/regChkLectura"
+                android:layout_marginBottom="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <CheckBox android:id="@+id/regChkLectura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lectura"/>
-
-            <CheckBox
-                android:id="@+id/regChkApoyoDigital"
+                android:text="Lectura y acompañamiento lector" />
+            <CheckBox android:id="@+id/regChkApoyoDigital"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Apoyo Digital"/>
-
-            <CheckBox
-                android:id="@+id/regChkAcompanamiento"
+                android:text="Apoyo digital y uso de apps" />
+            <CheckBox android:id="@+id/regChkAcompanamiento"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Acompañamiento"
-                android:layout_marginBottom="16dp"/>
+                android:text="Acompañamiento a adultos mayores" />
         </LinearLayout>
-        <!-- Correo -->
+        <!-- CORREO Y CLAVE -->
         <com.google.android.material.textfield.TextInputLayout
+            android:hint="Correo electrónico"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-            <EditText
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtCorreo"
+                android:inputType="textEmailAddress"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Correo"
-                android:inputType="textEmailAddress"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
-        <!-- Contraseña -->
         <com.google.android.material.textfield.TextInputLayout
+            android:hint="Contraseña"
+            app:endIconMode="password_toggle"
+            android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:passwordToggleEnabled="true">
-            <EditText
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtClave"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Confirmar contraseña -->
         <com.google.android.material.textfield.TextInputLayout
+            android:hint="Confirmar contraseña"
+            app:endIconMode="password_toggle"
+            android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            app:passwordToggleEnabled="true">
-            <EditText
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtClave2"
+                android:inputType="textPassword"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirmar Contraseña"
-                android:inputType="textPassword"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Distrito -->
+        <!-- UBICACIÓN -->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Distrito"
+            android:text="Distrito / Ubicación"
             android:textSize="16sp"
             android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <Spinner
             android:id="@+id/regCboDistritos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" />
 
-        <!-- Aceptar términos -->
+        <!-- TÉRMINOS -->
         <CheckBox
             android:id="@+id/regChkTerminos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Acepto los términos y condiciones"/>
+            android:text="Acepto los términos y condiciones"
+            android:textColor="@color/gray_text"
+            android:layout_marginBottom="28dp" />
 
-        <!-- Botones finales -->
+        <!-- BOTONES -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginBottom="32dp">
+            android:gravity="center">
 
             <Button
                 android:id="@+id/regBtnCrear"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Crear Cuenta"
+                android:text="Registrar"
+                android:textAllCaps="false"
                 android:backgroundTint="@color/purple_500"
                 android:textColor="@android:color/white"
-                android:textAllCaps="false"
-                android:layout_marginEnd="8dp"/>
+                android:layout_marginEnd="8dp" />
 
             <Button
                 android:id="@+id/regBtnRegresar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Regresar"
-                android:backgroundTint="@android:color/darker_gray"
-                android:textColor="@android:color/white"
+                android:text="Cancelar"
                 android:textAllCaps="false"
-                android:layout_marginStart="8dp"/>
+                android:backgroundTint="@color/gray_button"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="8dp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
