@@ -12,4 +12,81 @@
     <color name="light_blue_200">#FF81D4FA</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
+    <color name="md_theme_light_primary">#006C51</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#7FF9D1</color>
+    <color name="md_theme_light_onPrimaryContainer">#002117</color>
+
+    <color name="md_theme_light_secondary">#4A635A</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#CDE9DB</color>
+    <color name="md_theme_light_onSecondaryContainer">#072018</color>
+
+    <color name="md_theme_light_tertiary">#3F6375</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#C3E8FD</color>
+    <color name="md_theme_light_onTertiaryContainer">#001F2A</color>
+
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+
+    <color name="md_theme_light_background">#FBFDF9</color>
+    <color name="md_theme_light_onBackground">#191C1A</color>
+    <color name="md_theme_light_surface">#FBFDF9</color>
+    <color name="md_theme_light_onSurface">#191C1A</color>
+
+    <!-- Colores Modo Oscuro -->
+    <color name="md_theme_dark_primary">#63DCB5</color>
+    <color name="md_theme_dark_onPrimary">#00382A</color>
+    <color name="md_theme_dark_primaryContainer">#00513C</color>
+    <color name="md_theme_dark_onPrimaryContainer">#7FF9D1</color>
+
+    <color name="md_theme_dark_secondary">#B1CCBF</color>
+    <color name="md_theme_dark_onSecondary">#1D352C</color>
+    <color name="md_theme_dark_secondaryContainer">#344C42</color>
+    <color name="md_theme_dark_onSecondaryContainer">#CDE9DB</color>
+
+    <color name="md_theme_dark_tertiary">#A7CCE0</color>
+    <color name="md_theme_dark_onTertiary">#0C3445</color>
+    <color name="md_theme_dark_tertiaryContainer">#264B5C</color>
+    <color name="md_theme_dark_onTertiaryContainer">#C3E8FD</color>
+
+    <color name="md_theme_dark_error">#FFB4AB</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+
+    <color name="md_theme_dark_background">#191C1A</color>
+    <color name="md_theme_dark_onBackground">#E1E3DF</color>
+    <color name="md_theme_dark_surface">#191C1A</color>
+    <color name="md_theme_dark_onSurface">#E1E3DF</color>
+
+    <!-- Colores de Estado -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="info">#2196F3</color>
+    <color name="danger">#F44336</color>
+
+    <!-- Colores de Prioridad -->
+    <color name="priority_urgent">#D32F2F</color>
+    <color name="priority_high">#F57C00</color>
+    <color name="priority_medium">#FBC02D</color>
+    <color name="priority_low">#388E3C</color>
+
+    <!-- Colores Adicionales -->
+    <color name="transparent">#00000000</color>
+
+    <!-- Overlay -->
+    <color name="overlay_dark">#80000000</color>
+    <color name="overlay_light">#40FFFFFF</color>
+
+    <!-- Divider -->
+    <color name="divider_light">#1F000000</color>
+    <color name="divider_dark">#1FFFFFFF</color>
+
+    <!-- Shimmer Effect -->
+    <color name="shimmer_base">#F0F0F0</color>
+    <color name="shimmer_highlight">#FFFFFF</color>
 </resources>

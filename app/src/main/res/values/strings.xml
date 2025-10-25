@@ -20,11 +20,6 @@
         <item>Voluntario</item>
         <item>Familiar</item>
     </string-array>
-    <string-array name="disponibilidad_voluntario">
-        <item>Mañanas</item>
-        <item>Tardes</item>
-        <item>Fines de semana</item>
-    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="bieLblSaludo">Hola {usuario}</string>
@@ -42,4 +37,41 @@
     <string name="sincronizar_datos">Sincronizar datos automáticamente</string>
     <string name="guardar_cambios">Guardar Cambios</string>
     <string name="conf_app">Configuración de la Aplicación</string>
+    <!-- Disponibilidad -->
+    <string-array name="disponibilidad_voluntario">
+        <item>Cualquier Hora</item>
+        <item>Mañana</item>
+        <item>Tarde</item>
+        <item>Noche</item>
+        <item>Fin de Semana</item>
+    </string-array>
+
+    <!-- Tipo de recordatorio -->
+    <string-array name="tipo_recordatorio">
+        <item>Medicamento</item>
+        <item>Cita Médica</item>
+        <item>Actividad Social</item>
+        <item>Otro</item>
+    </string-array>
+
+    <!-- Tipos de ayuda -->
+    <string-array name="tipos_ayuda">
+        <item>Lectura</item>
+        <item>Apoyo Digital</item>
+        <item>Acompañamiento</item>
+        <item>Cocina</item>
+        <item>Limpieza</item>
+        <item>Ejercicios</item>
+        <item>Compras</item>
+        <item>Transporte</item>
+    </string-array>
+
+    <!-- Métodos de pago -->
+    <string-array name="metodos_pago">
+        <item>Tarjeta de Crédito</item>
+        <item>Tarjeta de Débito</item>
+        <item>Yape</item>
+        <item>Plin</item>
+        <item>Transferencia Bancaria</item>
+    </string-array>
 </resources>
