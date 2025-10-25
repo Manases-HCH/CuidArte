@@ -10,7 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cuidarte.R;
 
-public class HomePacienteActivity extends AppCompatActivity {
+public class HomeAdultoMayorActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

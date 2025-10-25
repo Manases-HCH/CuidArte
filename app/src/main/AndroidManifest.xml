@@ -15,7 +15,7 @@
         >
 
         <activity
-            android:name=".actividades.HomePacienteActivity"
+            android:name=".actividades.HomeAdultoMayorActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.HomeProfesionalActivity"
