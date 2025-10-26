@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:gravity="end"
-            android:text="¿Olvidaste tu contraseña?"
+            android:text="@string/sesTxtOlv"
             android:textColor="@color/purple_500"
             android:textStyle="italic" />
 
