@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="24dp"
         android:gravity="center_horizontal">
 
         <!-- Foto de perfil -->
@@ -112,48 +113,106 @@
             android:text="Lunes a Viernes, 9:00 am - 5:00 pm"
             android:textSize="15sp"
             android:textColor="@color/black" />
-        <EditText
-            android:id="@+id/txtTelefono"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Teléfono: "
-            android:textSize="15sp"
-            android:layout_marginTop="8dp" />
 
-        <EditText
-            android:id="@+id/txtSexo"
+        <!-- Habilidades -->
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Sexo: "
-            android:textSize="15sp" />
+            android:text="Datos Generales"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/purple_500" />
 
-        <EditText
-            android:id="@+id/txtFechaNac"
+        <!-- Teléfono -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha de nacimiento: "
-            android:textSize="15sp" />
+            android:layout_marginTop="16dp"
+            android:hint="Teléfono"
+            android:layout_marginBottom="12dp">
 
-        <EditText
-            android:id="@+id/txtIdioma"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Idioma: "
-            android:textSize="15sp" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/txtIntereses"
+        <!-- Sexo -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Intereses: "
-            android:textSize="15sp" />
+            android:hint="Sexo"
+            android:layout_marginBottom="12dp">
 
-        <EditText
-            android:id="@+id/txtUbicacion"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSexo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Fecha de nacimiento -->
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ubicación: "
-            android:textSize="15sp" />
+            android:hint="Fecha de nacimiento"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtFechaNac"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="date"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Idioma -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Idioma"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtIdioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Intereses -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Intereses"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtIntereses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Ubicación -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ubicación"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUbicacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:textSize="15sp" />
+        </com.google.android.material.textfield.TextInputLayout>
         <!-- Botón editar perfil -->
         <Button
             android:id="@+id/btnEditarPerfil"

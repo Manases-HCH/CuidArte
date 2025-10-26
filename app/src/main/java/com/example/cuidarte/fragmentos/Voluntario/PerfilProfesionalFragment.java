@@ -69,11 +69,11 @@ public class PerfilProfesionalFragment extends Fragment {
 
         RequestParams params = new RequestParams();
         params.put("id_usuario", idUsuario);
-        params.put("telefono", txtTelefono.getText().toString().replace("Teléfono: ", ""));
+        params.put("telefono", txtTelefono.getText().toString());
         params.put("descripcion", txtDescripcion.getText().toString());
-        params.put("idioma", txtIdioma.getText().toString().replace("Idioma: ", ""));
-        params.put("intereses", txtIntereses.getText().toString().replace("Intereses: ", ""));
-        params.put("ubicacion", txtUbicacion.getText().toString().replace("Ubicación: ", ""));
+        params.put("idioma", txtIdioma.getText().toString());
+        params.put("intereses", txtIntereses.getText().toString());
+        params.put("ubicacion", txtUbicacion.getText().toString());
         params.put("horario_disponible", txtDisponibilidad.getText().toString());
         params.put("habilidad_lectura", chkLectura.isChecked() ? 1 : 0);
         params.put("habilidad_apoyo_digital", chkApoyoDigital.isChecked() ? 1 : 0);
@@ -125,12 +125,12 @@ public class PerfilProfesionalFragment extends Fragment {
                         txtCorreo.setText(data.getString("correo"));
                         txtDescripcion.setText(data.optString("descripcion", "Sin descripción"));
                         txtDisponibilidad.setText(data.optString("horario_disponible", "No especificado"));
-                        txtTelefono.setText("Teléfono: " + data.optString("telefono", "No registrado"));
-                        txtSexo.setText("Sexo: " + data.optString("sexo", "No definido"));
-                        txtFechaNac.setText("Fecha de nacimiento: " + data.optString("fecha_nacimiento", "-"));
-                        txtIdioma.setText("Idioma: " + data.optString("idioma", "Español"));
-                        txtIntereses.setText("Intereses: " + data.optString("intereses", "No especificado"));
-                        txtUbicacion.setText("Ubicación: " + data.optString("ubicacion", "No definida"));
+                        txtTelefono.setText(data.optString("telefono", "No registrado"));
+                        txtSexo.setText(data.optString("sexo", "No definido"));
+                        txtFechaNac.setText(data.optString("fecha_nacimiento", "-"));
+                        txtIdioma.setText(data.optString("idioma", "Español"));
+                        txtIntereses.setText(data.optString("intereses", "No especificado"));
+                        txtUbicacion.setText(data.optString("ubicacion", "No definida"));
 
                         // Cargar imagen
                         String fotoUrl = data.optString("foto_url", "");
