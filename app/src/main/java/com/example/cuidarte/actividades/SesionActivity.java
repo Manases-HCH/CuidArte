@@ -25,7 +25,7 @@ public class SesionActivity extends AppCompatActivity implements View.OnClickLis
     CheckBox chkRecordar;
 
     // Cambia a tu IP local o dominio del backend
-    String URL_API = "http://192.168.0.104:8012/api/login.php";
+    String URL_API = "http://192.168.18.11:80/api/login.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -206,7 +206,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void crearCuenta() {
-        String URL_API = "http://192.168.0.104:8012/api/registro.php";
+        String URL_API = "http://192.168.18.11:80/api/registro.php";
 
         // Obtener campos
         String dni = txtDni.getText().toString().trim();

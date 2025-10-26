@@ -1,8 +1,11 @@
-package com.example.cuidarte.fragmentos.Voluntario;
+package com.example.cuidarte.fragmentos.Adulto_Mayor;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,36 +19,40 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.cuidarte.R;
-import com.loopj.android.http.*;
+import com.example.cuidarte.actividades.HomeProfesionalActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class PerfilProfesionalFragment extends Fragment {
-
+public class PerfilAdultoMayorFragment extends Fragment {
     ImageView imgFoto;
-    TextView txtNombre, txtCorreo, txtDescripcion, txtDisponibilidad;
-    CheckBox chkLectura, chkApoyoDigital, chkAcompanamiento;
-    TextView txtTelefono, txtSexo, txtFechaNac, txtIdioma, txtIntereses, txtUbicacion;
+    TextView txtNombre, txtCorreo, txtDescripcion, txtNombreEmergencia,txtTelefonoEmergencia,txtRelacionEmergencia;
+    CheckBox chkSi ;
+    TextView txtTelefono, txtSexo, txtFechaNac, txtIdioma, txtIntereses, txtUbicacion,txtCondicionMedica,txtMedicamentos;
     Button btnEditar;
-    String URL_API = "http://192.168.18.11:80/api/perfil_profesional.php";
+    String URL_API = "http://192.168.18.11:80/api/perfil_adultoMayor.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_perfil_profesional, container, false);
+        View v = inflater.inflate(R.layout.fragment_perfil_adulto_mayor, container, false);
 
         imgFoto = v.findViewById(R.id.imgFotoPerfil);
         txtNombre = v.findViewById(R.id.txtNombre);
         txtCorreo = v.findViewById(R.id.txtCorreo);
         txtDescripcion = v.findViewById(R.id.txtDescripcion);
-        txtDisponibilidad = v.findViewById(R.id.txtDisponibilidad);
-        chkLectura = v.findViewById(R.id.chkLectura);
-        chkApoyoDigital = v.findViewById(R.id.chkApoyoDigital);
-        chkAcompanamiento = v.findViewById(R.id.chkAcompanamiento);
-        // 🔹 Nuevos TextView (agrega sus IDs al XML)
+        txtNombreEmergencia = v.findViewById(R.id.txtNombreEmergencia);
+        txtTelefonoEmergencia = v.findViewById(R.id.txtTelefonoEmergencia);
+        txtRelacionEmergencia = v.findViewById(R.id.txtRelacionEmergencia);
+        txtCondicionMedica = v.findViewById(R.id.txtCondicionMedica);
+        txtMedicamentos = v.findViewById(R.id.txtMedicamentos);
+        chkSi = v.findViewById(R.id.chkSi);
         txtTelefono = v.findViewById(R.id.txtTelefono);
         txtSexo = v.findViewById(R.id.txtSexo);
         txtFechaNac = v.findViewById(R.id.txtFechaNac);
@@ -74,13 +81,16 @@ public class PerfilProfesionalFragment extends Fragment {
         params.put("idioma", txtIdioma.getText().toString());
         params.put("intereses", txtIntereses.getText().toString());
         params.put("ubicacion", txtUbicacion.getText().toString());
-        params.put("horario_disponible", txtDisponibilidad.getText().toString());
-        params.put("habilidad_lectura", chkLectura.isChecked() ? 1 : 0);
-        params.put("habilidad_apoyo_digital", chkApoyoDigital.isChecked() ? 1 : 0);
-        params.put("habilidad_acompanamiento", chkAcompanamiento.isChecked() ? 1 : 0);
+        params.put("nombre_emergencia", txtNombreEmergencia.getText().toString());
+        params.put("telefono_emergencia", txtTelefonoEmergencia.getText().toString());
+        params.put("relacion_emergencia", txtRelacionEmergencia.getText().toString());
+        params.put("condiciones_medicas", txtCondicionMedica.getText().toString());
+        params.put("medicamentos", txtMedicamentos.getText().toString());
+        params.put("necesita_acompanamiento", chkSi.isChecked() ? 1 : 0);
+
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://192.168.0.104:8012/api/actualizar_perfil.php", params, new AsyncHttpResponseHandler() {
+        client.post("http://192.168.18.11:80/api/actualizar_perfilAdultoMayor.php", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
@@ -124,14 +134,17 @@ public class PerfilProfesionalFragment extends Fragment {
                         txtNombre.setText(nombreCompleto);
                         txtCorreo.setText(data.getString("correo"));
                         txtDescripcion.setText(data.optString("descripcion", "Sin descripción"));
-                        txtDisponibilidad.setText(data.optString("horario_disponible", "No especificado"));
+                        txtNombreEmergencia.setText(data.optString("nombre_emergencia", "No especificado"));
+                        txtTelefonoEmergencia.setText(data.optString("telefono_emergencia", "No especificado"));
+                        txtRelacionEmergencia.setText(data.optString("relacion_emergencia", "No especificado"));
                         txtTelefono.setText(data.optString("telefono", "No registrado"));
                         txtSexo.setText(data.optString("sexo", "No definido"));
                         txtFechaNac.setText(data.optString("fecha_nacimiento", "-"));
                         txtIdioma.setText(data.optString("idioma", "Español"));
                         txtIntereses.setText(data.optString("intereses", "No especificado"));
                         txtUbicacion.setText(data.optString("ubicacion", "No definida"));
-
+                        txtCondicionMedica.setText(data.optString("condiciones_medicas", "No definida"));
+                        txtMedicamentos.setText(data.optString("medicamentos", "No definida"));
 
                         // Cargar imagen
                         String fotoUrl = data.optString("foto_url", "");
@@ -140,9 +153,7 @@ public class PerfilProfesionalFragment extends Fragment {
                         }
 
                         // Habilidades
-                        chkLectura.setChecked(data.getInt("habilidad_lectura") == 1);
-                        chkApoyoDigital.setChecked(data.getInt("habilidad_apoyo_digital") == 1);
-                        chkAcompanamiento.setChecked(data.getInt("habilidad_acompanamiento") == 1);
+                        chkSi.setChecked(data.getInt("necesita_acompanamiento") == 1);
 
                     } else {
                         Toast.makeText(getContext(), json.getString("message"), Toast.LENGTH_SHORT).show();
