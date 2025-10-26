@@ -2,7 +2,9 @@ package com.example.cuidarte.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -22,6 +24,7 @@ public class SesionActivity extends AppCompatActivity implements View.OnClickLis
     TextView lblRegistro;
     CheckBox chkRecordar;
 
+    // Cambia a tu IP local o dominio del backend
     String URL_API = "http://192.168.0.104:8012/api/login.php";
 
     @Override
@@ -78,14 +81,27 @@ public class SesionActivity extends AppCompatActivity implements View.OnClickLis
 
                     if (json.getBoolean("success")) {
                         JSONObject data = json.getJSONObject("data");
+
+                        // ✅ Datos completos del backend
+                        int idUsuario = data.getInt("id_usuario");
+                        int perfilId = data.isNull("perfil_id") ? -1 : data.getInt("perfil_id");
                         String nombre = data.getString("nombres");
                         String tipoUsuario = data.getString("tipo_usuario");
+
+                        // 🔹 Guardar sesión
+                        SharedPreferences prefs = getSharedPreferences("usuarioSesion", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putInt("id_usuario", idUsuario);
+                        editor.putInt("perfil_id", perfilId);
+                        editor.putString("tipo_usuario", tipoUsuario);
+                        editor.putString("nombre_usuario", nombre);
+                        editor.apply();
 
                         Toast.makeText(SesionActivity.this,
                                 "Bienvenido " + nombre + " (" + tipoUsuario + ")",
                                 Toast.LENGTH_LONG).show();
 
-                        // Puedes redirigir según el tipo
+                        // 🔹 Redirigir según tipo
                         if (tipoUsuario.equalsIgnoreCase("VOLUNTARIO")) {
                             startActivity(new Intent(SesionActivity.this, HomeProfesionalActivity.class));
                         } else if (tipoUsuario.equalsIgnoreCase("ADULTO_MAYOR")) {
@@ -93,6 +109,8 @@ public class SesionActivity extends AppCompatActivity implements View.OnClickLis
                         } else {
                             startActivity(new Intent(SesionActivity.this, HomeAdminActivity.class));
                         }
+                        finish();
+
                     } else {
                         Toast.makeText(SesionActivity.this,
                                 json.getString("message"),
@@ -101,13 +119,13 @@ public class SesionActivity extends AppCompatActivity implements View.OnClickLis
 
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    Toast.makeText(SesionActivity.this, "Error de parseo JSON", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SesionActivity.this, "Error al procesar la respuesta JSON", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(SesionActivity.this, "Error de conexión: " + error.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(SesionActivity.this, "Error de conexión con el servidor", Toast.LENGTH_LONG).show();
             }
         });
     }

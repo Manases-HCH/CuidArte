@@ -112,7 +112,48 @@
             android:text="Lunes a Viernes, 9:00 am - 5:00 pm"
             android:textSize="15sp"
             android:textColor="@color/black" />
+        <EditText
+            android:id="@+id/txtTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Teléfono: "
+            android:textSize="15sp"
+            android:layout_marginTop="8dp" />
 
+        <EditText
+            android:id="@+id/txtSexo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sexo: "
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/txtFechaNac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fecha de nacimiento: "
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/txtIdioma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Idioma: "
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/txtIntereses"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Intereses: "
+            android:textSize="15sp" />
+
+        <EditText
+            android:id="@+id/txtUbicacion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ubicación: "
+            android:textSize="15sp" />
         <!-- Botón editar perfil -->
         <Button
             android:id="@+id/btnEditarPerfil"
@@ -123,6 +164,7 @@
             android:textAllCaps="false"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white" />
+
 
     </LinearLayout>
 </ScrollView>
