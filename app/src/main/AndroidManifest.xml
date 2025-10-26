@@ -18,7 +18,7 @@
             android:name=".actividades.HomeAdultoMayorActivity"
             android:exported="false" />
         <activity
-            android:name=".actividades.HomeProfesionalActivity"
+            android:name=".actividades.SplashActivity"
             android:exported="false" />
         <activity
             android:name=".actividades.HomeAdminActivity"
@@ -27,10 +27,10 @@
             android:name=".actividades.RegistroActivity"
             android:exported="false" />
         <activity
-            android:name=".actividades.SesionActivity"
+            android:name=".actividades.HomeProfesionalActivity"
             android:exported="false" />
         <activity
-            android:name=".actividades.SplashActivity"
+            android:name=".actividades.SesionActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
