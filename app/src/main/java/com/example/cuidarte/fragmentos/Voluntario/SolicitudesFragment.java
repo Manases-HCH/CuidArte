@@ -1,66 +1,104 @@
 package com.example.cuidarte.fragmentos.Voluntario;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuidarte.R;
+import com.example.cuidarte.modelos.Solicitud;
+import com.example.cuidarte.adapters.SolicitudAdapter;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SolicitudesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import cz.msebera.android.httpclient.Header;
+import java.util.ArrayList;
+import java.util.List;
+
 public class SolicitudesFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView recyclerViewSolicitudes;
+    private LinearLayout layoutEmptyState;
+    private SolicitudAdapter adapter;
+    private List<Solicitud> listaSolicitudes = new ArrayList<>();
+    private final String URL_API = "http://192.168.0.104:8012/api/solicitudes_voluntario.php";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public SolicitudesFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SolicitudesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static SolicitudesFragment newInstance(String param1, String param2) {
-        SolicitudesFragment fragment = new SolicitudesFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    public SolicitudesFragment() {}
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_solicitudes, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_solicitudes, container, false);
+
+        recyclerViewSolicitudes = v.findViewById(R.id.recyclerViewSolicitudes);
+        layoutEmptyState = v.findViewById(R.id.layoutEmptyState);
+
+        recyclerViewSolicitudes.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new SolicitudAdapter(listaSolicitudes, getContext());
+        recyclerViewSolicitudes.setAdapter(adapter);
+
+        cargarSolicitudes();
+
+        return v;
+    }
+
+    private void cargarSolicitudes() {
+        SharedPreferences prefs = requireActivity().getSharedPreferences("usuarioSesion", Context.MODE_PRIVATE);
+        int idVoluntario = prefs.getInt("id_usuario", -1);
+
+        if (idVoluntario == -1) {
+            Toast.makeText(getContext(), "Sesión no encontrada", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String url = "http://192.168.0.104:8012/api/solicitudes_voluntario.php?voluntario_id=" + idVoluntario;
+
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                try {
+                    JSONObject json = new JSONObject(new String(responseBody));
+                    if (json.getBoolean("success")) {
+                        JSONArray data = json.getJSONArray("data");
+
+                        // 🔹 Aquí colocas el bloque
+                        if (data.length() == 0) {
+                            recyclerViewSolicitudes.setVisibility(View.GONE);
+                            layoutEmptyState.setVisibility(View.VISIBLE);
+                        } else {
+                            recyclerViewSolicitudes.setVisibility(View.VISIBLE);
+                            layoutEmptyState.setVisibility(View.GONE);
+                            // TODO: llenar RecyclerView con el adaptador
+                        }
+
+                    } else {
+                        Toast.makeText(getContext(), json.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Toast.makeText(getContext(), "Error al procesar JSON", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(getContext(), "Error de conexión", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

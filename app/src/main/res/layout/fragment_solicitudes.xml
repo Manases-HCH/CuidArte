@@ -8,78 +8,88 @@
     android:background="?attr/colorSurface"
     tools:context=".fragmentos.Voluntario.SolicitudesFragment">
 
-    <!-- 1. Barra de Herramientas (Toolbar) con Material Design -->
+    <!-- 🔹 AppBar con Toolbar -->
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="4dp">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarSolicitudes"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
             app:title="Solicitudes Pendientes"
-            app:titleTextColor="?attr/colorOnPrimary"
-            android:background="?attr/colorPrimary" />
-
+            app:titleCentered="true"
+            app:titleTextColor="@android:color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- 2. Contenido principal con estado vacío o RecyclerView -->
-    <androidx.core.widget.NestedScrollView
+    <!-- 🔹 Contenido principal -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <LinearLayout
+        <!-- 🌍 Mapa superior -->
+        <fragment
+            android:id="@+id/mapSolicitudes"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="250dp"
+            android:layout_marginBottom="8dp" />
 
-            <!-- Mensaje de Estado Vacío (Empty State) -->
+        <!-- 📋 Contenedor de solicitudes -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- 🧾 Lista de solicitudes -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerViewSolicitudes"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:padding="8dp"
+                tools:listitem="@layout/item_solicitud" />
+
+            <!-- 🚫 Estado vacío -->
             <LinearLayout
                 android:id="@+id/layoutEmptyState"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:layout_marginTop="100dp"
-                android:padding="24dp">
+                android:padding="24dp"
+                android:visibility="visible">
 
-                <!-- CORRECCIÓN: Se cambió ImageView por AppCompatImageView y se añadió app:tint.
-                     Esto resuelve el problema de compatibilidad del tema que causaba el error de inflación
-                     en las vistas MaterialTextView subsiguientes (alrededor de la línea 68). -->
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:src="@android:drawable/ic_menu_today"
-                    android:contentDescription="Icono de lista vacía" />
+                    android:tint="@color/purple_500"
+                    android:contentDescription="Sin solicitudes" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="¡Todo en orden!"
-
-             />
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textColor="@color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:gravity="center"
                     android:text="Actualmente no tienes solicitudes pendientes de revisión."
-                    />
-
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:gravity="center" />
             </LinearLayout>
 
-            <!-- Aquí iría el RecyclerView para la lista real de Solicitudes -->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerViewSolicitudes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                tools:listitem="@layout/item_solicitud" />
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+        </FrameLayout>
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

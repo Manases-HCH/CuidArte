@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cuidarte.R;
-import com.example.cuidarte.adaptadores.MensajeAdapter;
+import com.example.cuidarte.adapters.MensajeAdapter;
 import com.example.cuidarte.modelos.Mensaje;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;

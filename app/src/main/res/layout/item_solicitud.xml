@@ -1,68 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    android:clickable="true"
-    android:focusable="true"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp">
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardElevation="4dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="12dp"
         android:gravity="center_vertical">
 
-        <!-- Icono de Estado -->
-        <!-- FIX: Usamos un color hexadecimal sólido (#4CAF50) en lugar de un atributo de tema
-             para evitar el error de resolución al inflar la vista. -->
+        <!-- Foto del adulto mayor -->
         <ImageView
-            android:id="@+id/imgIconoEstado"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_notification_24"
-            app:tint="#4CAF50"
-            android:contentDescription="Icono de solicitud"
-            android:layout_marginEnd="16dp"/>
+            android:id="@+id/imgSolicitud"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_background"
+            android:src="@drawable/ic_person"
+            android:contentDescription="Foto del usuario" />
 
-        <!-- Información principal de la Solicitud -->
+        <!-- Información del emparejamiento -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:orientation="vertical">
 
-            <!-- Título de la Solicitud (Ej: "Cita médica") -->
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtTipoSolicitud"
+            <TextView
+                android:id="@+id/txtNombreSolicitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Título de la Solicitud"
-                android:textAppearance="?attr/textAppearanceSubtitle1"
-                android:textColor="?attr/colorOnSurface"/>
+                android:text="Nombre completo"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-            <!-- Subtítulo / Fecha / Estado -->
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtDetalleSolicitud"
+            <TextView
+                android:id="@+id/txtEstadoSolicitud"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Pendiente • 25 de septiembre de 2025"
-                android:textAppearance="?attr/textAppearanceCaption"
-                android:textColor="?attr/colorOnSurfaceVariant"/>
+                android:text="Estado: ACTIVO"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtAfinidadSolicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Afinidad: 90%"
+                android:textColor="@color/purple_500"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/txtUbicacionSolicitud"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicación: Trujillo"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- Flecha de Navegación -->
-        <!-- FIX: Usamos un color hexadecimal sólido (#757575) en lugar de un atributo de tema. -->
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_arrow_forward_24"
-            app:tint="#757575"
-            android:contentDescription="Ir a detalles"/>
     </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>

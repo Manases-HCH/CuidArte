@@ -1,4 +1,4 @@
-package com.example.cuidarte.adaptadores;
+package com.example.cuidarte.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
