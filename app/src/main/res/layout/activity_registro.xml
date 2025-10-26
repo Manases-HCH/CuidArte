@@ -21,7 +21,7 @@
             android:id="@+id/regTitulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Crear Cuenta"
+            android:text="@string/regCrearCuenta"
             android:textSize="26sp"
             android:textStyle="bold"
             android:textColor="@color/purple_700"
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Completa tus datos para formar parte de la red CuidArte"
+            android:text="@string/regDescripcion"
             android:textSize="15sp"
             android:textColor="@color/gray_text"
             android:gravity="center"
@@ -53,14 +53,14 @@
                 android:src="@drawable/foto"
                 android:scaleType="centerCrop"
                 android:background="@drawable/circle_background"
-                android:contentDescription="Foto de perfil"
+                android:contentDescription="@string/regFoto"
                 android:elevation="4dp" />
 
             <Button
                 android:id="@+id/regBtnCamara"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cambiar foto"
+                android:text="@string/reCamFoto"
                 android:textAllCaps="false"
                 android:textColor="@color/purple_500"
                 android:backgroundTint="@android:color/transparent"
@@ -69,7 +69,7 @@
 
         <!-- TIPO DE USUARIO -->
         <TextView
-            android:text="Tipo de Usuario"
+            android:text="@string/regTipoUsuario"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"
@@ -87,7 +87,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="DNI"
+            android:hint="@string/regDni"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtDni"
@@ -100,7 +100,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombres"
+            android:hint="@string/regNombre"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtNombre"
@@ -112,7 +112,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Apellidos"
+            android:hint="@string/regApellidos"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtApellidos"
@@ -124,7 +124,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha de nacimiento"
+            android:hint="@string/regFecNac"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtFechaNac"
@@ -138,7 +138,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Teléfono"
+            android:hint="@string/regTeléfono"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtTelefono"
@@ -150,7 +150,7 @@
 
         <!-- SEXO -->
         <TextView
-            android:text="Sexo"
+            android:text="@string/regSexo"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginTop="4dp"
@@ -166,19 +166,19 @@
 
             <RadioButton
                 android:id="@+id/regRbtMasculino"
-                android:text="Masculino"
+                android:text="@string/regMasculino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/regRbtFemenino"
-                android:text="Femenino"
+                android:text="@string/regFemenino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <RadioButton
                 android:id="@+id/regRbtNoDefinido"
-                android:text="No definido"
+                android:text="@string/regNoDef"
                 android:checked="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -188,7 +188,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Descripción personal (opcional)"
+            android:hint="@string/regDes"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtDescripcion"
@@ -201,7 +201,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Intereses o habilidades (separados por coma)"
+            android:hint="@string/regHabil"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtIntereses"
@@ -221,7 +221,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="Latitud">
+                android:hint="@string/regLatitud">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regTxtLatitud"
                     android:inputType="numberDecimal"
@@ -237,7 +237,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:hint="Longitud">
+                android:hint="@string/reglblLon">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/regTxtLongitud"
                     android:inputType="numberDecimal"
@@ -250,7 +250,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Idioma"
+            android:hint="@string/reglblIdi"
             android:layout_marginBottom="12dp">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/regTxtIdioma"
@@ -301,7 +301,7 @@
         </LinearLayout>
         <!-- CORREO Y CLAVE -->
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="Correo electrónico"
+            android:hint="@string/reglblCorreo"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
@@ -314,7 +314,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="Contraseña"
+            android:hint="@string/regLblContra"
             app:endIconMode="password_toggle"
             android:layout_marginBottom="12dp"
             android:layout_width="match_parent"
@@ -327,7 +327,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:hint="Confirmar contraseña"
+            android:hint="@string/regLblContraCon"
             app:endIconMode="password_toggle"
             android:layout_marginBottom="20dp"
             android:layout_width="match_parent"
@@ -341,7 +341,7 @@
 
         <!-- UBICACIÓN -->
         <TextView
-            android:text="Distrito / Ubicación"
+            android:text="@string/regLblDis"
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginBottom="8dp"
@@ -359,7 +359,7 @@
             android:id="@+id/regChkTerminos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Acepto los términos y condiciones"
+            android:text="@string/regLblTer"
             android:textColor="@color/gray_text"
             android:layout_marginBottom="28dp" />
 
@@ -375,7 +375,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Registrar"
+                android:text="@string/regTxtRegistrar"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/purple_500"
                 android:textColor="@android:color/white"
@@ -386,7 +386,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cancelar"
+                android:text="@string/regTxtCan"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/gray_button"
                 android:textColor="@android:color/white"

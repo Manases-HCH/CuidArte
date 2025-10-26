@@ -30,7 +30,7 @@
             android:id="@+id/txtNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Juan Pérez"
+            android:text="@string/pertxtpro"
             android:textSize="20sp"
             android:textStyle="bold"
             android:paddingTop="12dp"
@@ -41,7 +41,7 @@
             android:id="@+id/txtCorreo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="juan.perez@ejemplo.com"
+            android:text="@string/pertxtcor"
             android:textSize="14sp"
             android:textColor="@color/black" />
 
@@ -53,7 +53,7 @@
             android:layout_marginTop="16dp"
             android:padding="12dp"
             android:background="@drawable/rounded_background"
-            android:text="Soy voluntario con experiencia en acompañamiento a adultos mayores, lectura y apoyo digital."
+            android:text="@string/pertxtdes"
             android:textSize="15sp"
             android:textColor="@color/black" />
 
@@ -61,7 +61,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habilidades"
+            android:text="@string/pertxthab"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
@@ -78,26 +78,26 @@
                 android:id="@+id/chkLectura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lectura" />
+                android:text="@string/pertxtlec" />
 
             <CheckBox
                 android:id="@+id/chkApoyoDigital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Apoyo digital" />
+                android:text="@string/pertxtapd" />
 
             <CheckBox
                 android:id="@+id/chkAcompanamiento"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Acompañamiento" />
+                android:text="@string/pertxtacom" />
         </LinearLayout>
 
         <!-- Disponibilidad -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Disponibilidad"
+            android:text="@string/pertxtdis"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
@@ -110,7 +110,7 @@
             android:layout_marginTop="8dp"
             android:padding="12dp"
             android:background="@drawable/rounded_background"
-            android:text="Lunes a Viernes, 9:00 am - 5:00 pm"
+            android:text="@string/pertxtahor"
             android:textSize="15sp"
             android:textColor="@color/black" />
 
@@ -118,7 +118,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Datos Generales"
+            android:text="@string/pertxtadtg"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginTop="20dp"
@@ -129,7 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Teléfono"
+            android:hint="@string/perlbltel"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -143,7 +143,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Sexo"
+            android:hint="@string/perlblsex"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -158,7 +158,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Fecha de nacimiento"
+            android:hint="@string/perlblfec"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -173,7 +173,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Idioma"
+            android:hint="@string/perlblidi"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -188,7 +188,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Intereses"
+            android:hint="@string/perlblint"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -203,7 +203,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ubicación"
+            android:hint="@string/perlblubi"
             android:layout_marginBottom="12dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -219,7 +219,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Editar perfil"
+            android:text="@string/perlbledit"
             android:textAllCaps="false"
             android:backgroundTint="@color/purple_500"
             android:textColor="@android:color/white" />
