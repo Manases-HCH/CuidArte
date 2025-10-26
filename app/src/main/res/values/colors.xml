@@ -19,6 +19,7 @@
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#7FF9D1</color>
     <color name="md_theme_light_onPrimaryContainer">#002117</color>
+    <color name="dark_gray">#555555</color>
 
     <color name="md_theme_light_secondary">#4A635A</color>
     <color name="md_theme_light_onSecondary">#FFFFFF</color>

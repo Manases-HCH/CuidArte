@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.cuidarte.R;
 import com.example.cuidarte.fragmentos.Voluntario.BienvenidaFragment;
 import com.example.cuidarte.fragmentos.Voluntario.ChatFragment;
+import com.example.cuidarte.fragmentos.Voluntario.ChatListFragment;
 import com.example.cuidarte.fragmentos.Voluntario.PerfilProfesionalFragment;
 import com.example.cuidarte.fragmentos.Voluntario.PreferenciasFragment;
 import com.example.cuidarte.fragmentos.Voluntario.ReputacionFragment;
@@ -31,7 +32,7 @@ public class HomeProfesionalActivity extends AppCompatActivity {
         bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_chat) {
-                switchFragment(new ChatFragment());
+                switchFragment(new ChatListFragment());
                 return true;
             } else if (itemId == R.id.nav_reputacion) {
                 switchFragment(new ReputacionFragment());
