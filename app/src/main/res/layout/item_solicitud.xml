@@ -3,6 +3,7 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="8dp"
     card_view:cardCornerRadius="12dp"
     card_view:cardElevation="4dp"
@@ -11,9 +12,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="12dp"
-        android:gravity="center_vertical">
+        android:padding="12dp">
 
         <!-- Foto del adulto mayor -->
         <ImageView
@@ -21,14 +22,14 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginEnd="12dp"
-            android:scaleType="centerCrop"
             android:background="@drawable/circle_background"
-            android:src="@drawable/ic_person"
-            android:contentDescription="Foto del usuario" />
+            android:contentDescription="Foto del usuario"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_person" />
 
         <!-- Información del emparejamiento -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
@@ -37,9 +38,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nombre completo"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/txtEstadoSolicitud"
@@ -66,5 +67,32 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnVerUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ubicación"
+                app:iconPadding="8dp"
+                app:iconGravity="textStart"
+                android:textSize="10sp"
+                app:cornerRadius="16dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAceptar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Aceptar"
+                android:textSize="10sp"
+                app:cornerRadius="16dp"
+                style="@style/Widget.MaterialComponents.Button" />
+
+
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

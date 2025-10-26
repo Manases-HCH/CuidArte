@@ -64,6 +64,12 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
 
+    // Google Maps
+    implementation("com.google.android.gms:play-services-maps:18.2.0")
+// Google Location Services (si quieres usar ubicación del usuario)
+    implementation("com.google.android.gms:play-services-location:21.0.1")
+    implementation("com.google.android.material:material:1.11.0")
+
 
     // 🔹 Gson
     implementation("com.google.code.gson:gson:2.10.1")
