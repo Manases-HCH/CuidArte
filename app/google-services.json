@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "93917013998",
+    "project_id": "cuidarte-d16f7",
+    "storage_bucket": "cuidarte-d16f7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93917013998:android:0dee02cbbca0531b0110ff",
+        "android_client_info": {
+          "package_name": "com.example.cuidarte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93917013998-soe6ggsgrg7hrd57ln5g5bsm2eoo5sfg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cuidarte",
+            "certificate_hash": "d4c95c6b7e2fd17b1a09233084ab0a81abc9992b"
+          }
+        },
+        {
+          "client_id": "93917013998-pndfg96bipt24uumatc4o3897ihdsvci.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCTu-qIayEge6RNig8ERsJmFnfPalsVm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93917013998-d19kqpi6shhg9tqreb08mucapbpik6hi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
