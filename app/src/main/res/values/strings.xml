@@ -89,6 +89,9 @@
     <string name="perlblint">Intereses</string>
     <string name="perlblubi">Ubicación</string>
     <string name="perlbledit">Editar perfil</string>
+    <string name="lblAgrCal">Agregar Calificación</string>
+    <string name="lblSolUbi">Ubicación</string>
+    <string name="lblSolAceptar">Aceptar</string>
     <!-- Disponibilidad -->
     <string-array name="disponibilidad_voluntario">
         <item>Cualquier Hora</item>

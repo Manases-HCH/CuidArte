@@ -298,10 +298,10 @@
             android:id="@+id/btnGuardarPreferencias"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/guardar_cambios"
             android:layout_marginTop="20dp"
             android:padding="12dp"
-            app:cornerRadius="8dp"/>
-
+            android:text="@string/guardar_cambios"
+            android:textAllCaps="false"
+            app:cornerRadius="8dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

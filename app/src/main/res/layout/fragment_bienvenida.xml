@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/bienbtnEnt"
+        android:textAllCaps="false"
         app:layout_constraintTop_toBottomOf="@id/text_bienvenida"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
