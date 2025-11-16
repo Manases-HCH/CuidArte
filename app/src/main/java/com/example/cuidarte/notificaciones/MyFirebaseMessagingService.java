@@ -3,11 +3,13 @@ package com.example.cuidarte.notificaciones;
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresPermission;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -36,11 +38,30 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             cuerpo = message.getNotification().getBody();
         }
 
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
         mostrarNotificacion(titulo, cuerpo);
     }
 
     @RequiresPermission(Manifest.permission.POST_NOTIFICATIONS)
     private void mostrarNotificacion(String titulo, String cuerpo) {
+
+        // 🔒 Verificar permiso en Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                Log.e("FCM", "Permiso POST_NOTIFICATIONS no otorgado. No se puede mostrar la notificación.");
+                return;
+            }
+        }
 
         String channelId = "CUIDARTE_CH";
 
@@ -61,4 +82,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationManagerCompat.from(this).notify(1, builder.build());
     }
+
 }
