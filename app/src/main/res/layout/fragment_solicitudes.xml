@@ -53,7 +53,6 @@
                 android:visibility="gone"
                 android:padding="8dp"
                 tools:listitem="@layout/item_solicitud" />
-
             <!-- 🚫 Estado vacío -->
             <LinearLayout
                 android:id="@+id/layoutEmptyState"
@@ -90,6 +89,15 @@
             </LinearLayout>
 
         </FrameLayout>
+        <Button
+            android:id="@+id/btnAgenda"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/VerAgenda"
+            android:textAllCaps="false"
+            android:padding="12dp"
+            android:layout_marginTop="20dp"/>
+
     </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

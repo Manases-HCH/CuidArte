@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class SolicitudesFragment extends Fragment {
     private SolicitudAdapter adapter;
     private List<Solicitud> listaSolicitudes = new ArrayList<>();
     private final String URL_API = ApiConfig.BASE_URL + "solicitudes_voluntario.php";
-
+    Button btnAgenda;
     public SolicitudesFragment() {}
 
     @Override
@@ -66,8 +67,16 @@ public class SolicitudesFragment extends Fragment {
                         new LatLng(-8.111, -79.028), 13f)); // 📍Ejemplo: Trujillo
             });
         }
+        btnAgenda = v.findViewById(R.id.btnAgenda);
         cargarSolicitudes();
-
+        btnAgenda.setOnClickListener(view -> {
+            requireActivity()
+                    .getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, new AgendaFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
         return v;
     }
 

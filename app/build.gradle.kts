@@ -91,4 +91,8 @@ dependencies {
 
     implementation("com.facebook.android:facebook-login:18.1.3")
     implementation("com.facebook.android:facebook-android-sdk:16.0.1")
+
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("androidx.core:core-ktx:1.12.0")
+
 }
