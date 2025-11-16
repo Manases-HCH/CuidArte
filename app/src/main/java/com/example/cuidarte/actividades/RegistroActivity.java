@@ -33,6 +33,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 
 import java.io.File;
@@ -206,8 +207,7 @@ public class RegistroActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void crearCuenta() {
-        String URL_API = "http://192.168.18.11:80/api/registro.php";
-
+        String URL_API = ApiConfig.BASE_URL + "registro.php";
         // Obtener campos
         String dni = txtDni.getText().toString().trim();
         String nombres = txtNombre.getText().toString().trim();

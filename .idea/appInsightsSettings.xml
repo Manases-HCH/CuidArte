@@ -9,10 +9,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.example.cuidarte" />
+                  <option name="mobileSdkAppId" value="1:93917013998:android:0dee02cbbca0531b0110ff" />
+                  <option name="projectId" value="cuidarte-d16f7" />
+                  <option name="projectNumber" value="93917013998" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

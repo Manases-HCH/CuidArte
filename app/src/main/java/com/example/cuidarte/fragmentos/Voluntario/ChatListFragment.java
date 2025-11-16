@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.example.cuidarte.adapters.ChatListAdapter;
 import com.example.cuidarte.modelos.ChatItem;
@@ -50,7 +52,7 @@ public class ChatListFragment extends Fragment {
             return;
         }
 
-        String url = "http://192.168.0.104:8012/api/chat_list.php?voluntario_id=" + idVoluntario;
+        String url = ApiConfig.BASE_URL + "chat_list.php?voluntario_id=" + idVoluntario;
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new AsyncHttpResponseHandler() {
             @Override

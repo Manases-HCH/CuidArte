@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.example.cuidarte.adapters.MensajeAdapter;
 import com.example.cuidarte.modelos.Mensaje;
@@ -42,7 +43,7 @@ public class ChatFragment extends Fragment {
     private int yoId, otroId;
     private String otroNombre;
 
-    private final String URL_BASE = "http://192.168.0.104:8012/api/";
+    private final String URL_BASE = ApiConfig.BASE_URL;
 
     public ChatFragment() { }
 
@@ -137,7 +138,7 @@ public class ChatFragment extends Fragment {
         params.put("destinatario_id", destinatarioId);
         params.put("contenido", mensaje);
 
-        client.post("http://192.168.0.104:8012/api/chat_enviar.php", params, new AsyncHttpResponseHandler() {
+        client.post(ApiConfig.BASE_URL + "chat_enviar.php", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
                 try {

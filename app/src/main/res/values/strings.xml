@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">CuidArte</string>
+    <string name="facebook_app_id">835060432438592</string>
+    <string name="facebook_client_token">4e2f1e92e88f0457d5d3943bc16a5c0f</string>
     <string name="carLvlInicio">Cargando...</string>
     <string name="sesTxtCorreo">Correo</string>
     <string name="sesTxtClave">Clave</string>

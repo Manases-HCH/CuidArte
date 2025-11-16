@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.example.cuidarte.adapters.CalificacionAdapter;
 import com.example.cuidarte.modelos.Calificacion;
@@ -69,8 +70,8 @@ public class ReputacionFragment extends Fragment {
             // Aquí, debes pasar el ID del adulto mayor a evaluar.
             // Por ahora, si estás probando, puedes poner un ID fijo.
             int adultoMayorId = 2; // <--- reemplaza luego con el real
-            com.example.cuidarte.dialogos.EvaluarDialog dialog =
-                    new com.example.cuidarte.dialogos.EvaluarDialog(getContext(), adultoMayorId);
+            com.example.cuidarte.fragmentos.Voluntario.EvaluarDialog dialog =
+                    new com.example.cuidarte.fragmentos.Voluntario.EvaluarDialog(getContext(), adultoMayorId);
             dialog.setOnDismissListener(dialogInterface -> cargarReputacion(voluntarioId));
             dialog.show();
         });
@@ -80,7 +81,7 @@ public class ReputacionFragment extends Fragment {
 
 
     private void cargarReputacion(int voluntarioId) {
-        String url = "http://192.168.0.104:8012/api/reputacion_listar.php?voluntario_id=" + voluntarioId;
+        String url = ApiConfig.BASE_URL + "reputacion_listar.php?voluntario_id=" + voluntarioId;
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new AsyncHttpResponseHandler() {

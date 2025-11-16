@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.loopj.android.http.*;
 
@@ -30,7 +31,7 @@ public class PerfilProfesionalFragment extends Fragment {
     CheckBox chkLectura, chkApoyoDigital, chkAcompanamiento;
     TextView txtTelefono, txtSexo, txtFechaNac, txtIdioma, txtIntereses, txtUbicacion;
     Button btnEditar;
-    String URL_API = "http://192.168.18.11:80/api/perfil_profesional.php";
+    String URL_API = ApiConfig.BASE_URL + "perfil_profesional.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,7 +81,7 @@ public class PerfilProfesionalFragment extends Fragment {
         params.put("habilidad_acompanamiento", chkAcompanamiento.isChecked() ? 1 : 0);
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://192.168.0.104:8012/api/actualizar_perfil.php", params, new AsyncHttpResponseHandler() {
+        client.post(ApiConfig.BASE_URL + "actualizar_perfil.php", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {

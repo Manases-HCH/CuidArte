@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.example.cuidarte.modelos.Solicitud;
 import com.example.cuidarte.adapters.SolicitudAdapter;
@@ -37,13 +38,14 @@ public class SolicitudesFragment extends Fragment {
     private LinearLayout layoutEmptyState;
     private SolicitudAdapter adapter;
     private List<Solicitud> listaSolicitudes = new ArrayList<>();
-    private final String URL_API = "http://192.168.0.104:8012/api/solicitudes_voluntario.php";
+    private final String URL_API = ApiConfig.BASE_URL + "solicitudes_voluntario.php";
 
     public SolicitudesFragment() {}
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
 
         View v = inflater.inflate(R.layout.fragment_solicitudes, container, false);
 
@@ -78,7 +80,7 @@ public class SolicitudesFragment extends Fragment {
             return;
         }
 
-        String url = "http://192.168.0.104:8012/api/solicitudes_voluntario.php?voluntario_id=" + idVoluntario;
+        String url = ApiConfig.BASE_URL + "solicitudes_voluntario.php?voluntario_id=" + idVoluntario;
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(url, new AsyncHttpResponseHandler() {

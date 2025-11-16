@@ -1,4 +1,4 @@
-package com.example.cuidarte.dialogos;
+package com.example.cuidarte.fragmentos.Voluntario;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -60,7 +61,7 @@ public class EvaluarDialog extends Dialog {
     }
 
     private void enviarCalificacion(int voluntarioId, int adultoMayorId, int puntuacion, String comentario) {
-        String url = "http://192.168.0.104:8012/api/reputacion_insertar.php";
+        String url = ApiConfig.BASE_URL + "reputacion_insertar.php";
 
         AsyncHttpClient client = new AsyncHttpClient();
         RequestParams params = new RequestParams();

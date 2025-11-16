@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.cuidarte.ApiConfig;
 import com.example.cuidarte.R;
 import com.example.cuidarte.actividades.HomeProfesionalActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -36,7 +37,7 @@ public class PerfilAdultoMayorFragment extends Fragment {
     CheckBox chkSi ;
     TextView txtTelefono, txtSexo, txtFechaNac, txtIdioma, txtIntereses, txtUbicacion,txtCondicionMedica,txtMedicamentos;
     Button btnEditar;
-    String URL_API = "http://192.168.18.11:80/api/perfil_adultoMayor.php";
+    String URL_API = ApiConfig.BASE_URL + "perfil_adultoMayor.php";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,7 +91,7 @@ public class PerfilAdultoMayorFragment extends Fragment {
 
 
         AsyncHttpClient client = new AsyncHttpClient();
-        client.post("http://192.168.18.11:80/api/actualizar_perfilAdultoMayor.php", params, new AsyncHttpResponseHandler() {
+        client.post(ApiConfig.BASE_URL + "actualizar_perfilAdultoMayor.php", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
